@@ -460,7 +460,7 @@ let currentUser = null;
 let selectedImages = [];
 
 const ADMIN_USERS = [
-"adminpioneer"
+"mairahs"
 ];
 
 function toast(msg){
@@ -535,9 +535,7 @@ await Pi.authenticate(
 
 currentUser = auth.user;
 
-toast(
-`Welcome @${currentUser.username}`
-);
+alert(currentUser.username);
 
 document
 .getElementById("vendorNav")
