@@ -335,13 +335,26 @@
         });
 
         function switchTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.replace('block', 'hidden'));
-            document.getElementById(`tab-${tabId}`).classList.replace('hidden', 'block');
-            
-            document.querySelectorAll('.nav-btn').forEach(btn => btn.className = "nav-btn px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white transition");
-            document.getElementById(`btn-${tabId}`).className = "nav-btn px-4 py-2 rounded-lg text-sm font-medium transition text-amber-400 bg-slate-800/80";
-            refreshUI();
-        }
+
+    document.querySelectorAll('.tab-content').forEach(el => {
+        el.classList.add('hidden');
+        el.classList.remove('block');
+    });
+
+    const activeTab = document.getElementById(`tab-${tabId}`);
+    activeTab.classList.remove('hidden');
+    activeTab.classList.add('block');
+
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.className =
+        "nav-btn px-4 py-2 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800/50 transition duration-200";
+    });
+
+    document.getElementById(`btn-${tabId}`).className =
+    "nav-btn px-4 py-2 rounded-lg text-sm font-medium transition duration-200 text-amber-400 bg-slate-800/80";
+
+    refreshUI();
+}
 
         function filterOrigin(originType) {
             activeOriginFilter = originType;
